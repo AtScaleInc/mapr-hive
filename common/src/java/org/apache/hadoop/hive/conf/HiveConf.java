@@ -138,7 +138,7 @@ public class HiveConf extends Configuration {
       HiveConf.ConfVars.METASTORE_VALIDATE_COLUMNS,
       HiveConf.ConfVars.METASTORE_VALIDATE_CONSTRAINTS,
       HiveConf.ConfVars.METASTORE_STORE_MANAGER_TYPE,
-      HiveConf.ConfVars.METASTORE_AUTO_CREATE_SCHEMA,
+      HiveConf.ConfVars.METASTORE_AUTO_CREATE_ALL,
       HiveConf.ConfVars.METASTORE_AUTO_START_MECHANISM_MODE,
       HiveConf.ConfVars.METASTORE_TRANSACTION_ISOLATION,
       HiveConf.ConfVars.METASTORE_CACHE_LEVEL2,
@@ -484,8 +484,8 @@ public class HiveConf extends Configuration {
     METASTORE_VALIDATE_CONSTRAINTS("datanucleus.validateConstraints", false,
         "validates existing schema against code. turn this on if you want to verify existing schema"),
     METASTORE_STORE_MANAGER_TYPE("datanucleus.storeManagerType", "rdbms", "metadata store type"),
-    METASTORE_AUTO_CREATE_SCHEMA("datanucleus.autoCreateSchema", true,
-        "creates necessary schema on a startup if one doesn't exist. set this to false, after creating it once"),
+    METASTORE_AUTO_CREATE_ALL("datanucleus.schema.autoCreateAll", false,
+         "creates necessary schema on a startup if one doesn't exist. set this to false, after creating it once"),
     METASTORE_FIXED_DATASTORE("datanucleus.fixedDatastore", false, ""),
     METASTORE_SCHEMA_VERIFICATION("hive.metastore.schema.verification", false,
         "Enforce metastore schema version consistency.\n" +
@@ -2741,8 +2741,7 @@ public class HiveConf extends Configuration {
     }
 
     if (getBoolVar(ConfVars.METASTORE_SCHEMA_VERIFICATION)) {
-      setBoolVar(ConfVars.METASTORE_AUTO_CREATE_SCHEMA, false);
-      setBoolVar(ConfVars.METASTORE_FIXED_DATASTORE, true);
+      setBoolVar(ConfVars.METASTORE_AUTO_CREATE_ALL, false);
     }
 
     if (getBoolVar(HiveConf.ConfVars.HIVECONFVALIDATION)) {

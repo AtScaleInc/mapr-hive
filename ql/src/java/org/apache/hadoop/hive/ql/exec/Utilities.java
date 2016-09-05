@@ -1040,8 +1040,8 @@ public final class Utilities {
     e.setPersistenceDelegate(java.sql.Date.class, new DatePersistenceDelegate());
     e.setPersistenceDelegate(Timestamp.class, new TimestampPersistenceDelegate());
 
-    e.setPersistenceDelegate(org.datanucleus.store.types.backed.Map.class, new MapDelegate());
-    e.setPersistenceDelegate(org.datanucleus.store.types.backed.List.class, new ListDelegate());
+    e.setPersistenceDelegate(org.datanucleus.store.types.wrappers.Map.class, new MapDelegate());
+    e.setPersistenceDelegate(org.datanucleus.store.types.wrappers.List.class, new ListDelegate());
     e.setPersistenceDelegate(CommonToken.class, new CommonTokenDelegate());
     e.setPersistenceDelegate(Path.class, new PathDelegate());
 
@@ -3878,4 +3878,6 @@ public final class Utilities {
       HiveConf.setVar(conf, HiveConf.ConfVars.HIVE_SERVER2_SSL_KEYSTORE_PASSWORD, "");
     }
   }
+
+
 }
