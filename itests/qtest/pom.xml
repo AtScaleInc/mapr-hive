@@ -683,7 +683,6 @@
                   initScript="q_test_init.sql"
                   cleanupScript="q_test_cleanup.sql"/>
 
-
               </target>
             </configuration>
             <goals>
